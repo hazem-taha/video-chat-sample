@@ -1,12 +1,22 @@
 import { credentials, appConfig } from "./config";
 
+var CONFIG = {
+  endpoints : {
+    api : "apievergo.connectycube.com" , // set custom API endpoint
+    chat : "chatevergo.connectycube.com" // set custom Chat endpoint
+  },
+  conference: { server: 'wss://janusevergo.connectycube.com:8989' }
+};
+
 class AuthService {
   $loginScreen = document.getElementById("login");
   $callScreen = document.getElementById("call");
   $loader = document.getElementById("login-loader");
   $caption = document.getElementById("login-caption");
 
-  init = () => ConnectyCube.init(credentials, appConfig);
+
+
+  init = () => ConnectyCube.init(credentials, CONFIG);
 
   createSession(user) {
     return ConnectyCube.createSession(user)

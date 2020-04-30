@@ -173,11 +173,11 @@ class CallService {
     const userName = this.isGuestMode ? displayName : this._getUserById(userId, "name");
     const infoText = `${userName} has ${this.isGuestMode ? 'joined' : 'accepted'} the call`;
     this.showSnackbar(infoText);
-    if (this.isGuestMode) {
+    // if (this.isGuestMode) {
       const userToAdd = {id: +userId, name: `${displayName || userId}`}
       this.addStreamElement(userToAdd)
       return 
-    }
+    // }
     this.$dialing.pause();
     this.clearNoAnswerTimers(userId)
   };
@@ -325,6 +325,13 @@ class CallService {
   }
 
   joinConf = (janusRoomId, retry) => {
+    // console.log('this.currentUserID => ', this.currentUserID);
+    // if([1249124, 1249126].indexOf(this.currentUserID) === -1) {
+    //   alert('You are not Malick !!!!');
+    //   return false;
+    // }
+
+    this.initiatorID = 1249124;
     this._session = ConnectyCube.videochatconference.createNewSession()
     return this._session.getUserMedia(this.mediaParams).then(stream => {
       this.addStreamElement({id: this.currentUserID, name: this.currentUserName, local: true})

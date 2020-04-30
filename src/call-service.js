@@ -38,7 +38,7 @@ class CallService {
     document.getElementById("createDialog").addEventListener("click", () => {
       const params = {
         type: 2,
-        occupants_ids: [1249124, 1249126, 1250795],
+        occupants_ids: [680, 681, 682, 683, 684, 685, 686, 687, 688, 377],
         name: "Hawaii relax team"
       };
 
@@ -102,7 +102,7 @@ class CallService {
   addStreamElement = opponents => {
     const $videochatStreams = document.getElementById("videochat-streams");
     const $videochatStreamsTemplate = document.getElementById("videochat-streams-template");
-    
+
     if (!Array.isArray(opponents)) {
       opponents = [opponents]
     }
@@ -176,7 +176,7 @@ class CallService {
     // if (this.isGuestMode) {
       const userToAdd = {id: +userId, name: `${displayName || userId}`}
       this.addStreamElement(userToAdd)
-      return 
+      return
     // }
     this.$dialing.pause();
     this.clearNoAnswerTimers(userId)
@@ -326,12 +326,12 @@ class CallService {
 
   joinConf = (janusRoomId, retry) => {
     // console.log('this.currentUserID => ', this.currentUserID);
-    // if([1249124, 1249126].indexOf(this.currentUserID) === -1) {
+    // if([377, 1249126].indexOf(this.currentUserID) === -1) {
     //   alert('You are not Malick !!!!');
     //   return false;
     // }
 
-    this.initiatorID = 1249124;
+    this.initiatorID = 377;
     this._session = ConnectyCube.videochatconference.createNewSession()
     return this._session.getUserMedia(this.mediaParams).then(stream => {
       this.addStreamElement({id: this.currentUserID, name: this.currentUserName, local: true})
